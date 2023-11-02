@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { themeColors } from "../theme";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -24,16 +24,24 @@ export default function CategoryScreen() {
         className="flex-1 bg-white px-12 pt-12 top-20"
         >
         <ScrollView>
-          <ImageBackground
-            source={require('')}
-            style={{ width: '100%', height: '100%' }}
-          >
-            <TouchableOpacity onPress={() => navigation.navigate('CategoryPets')} className="p-4 bg-yellow-400 rounded-2xl mb-3">
-              <Text className="text-gray-700 font-semibold text-xl ml-4">
-                Cachorros 
-              </Text>
-            </TouchableOpacity>
-          </ImageBackground>
+          <TouchableOpacity  className="p-4 bg-yellow-400 rounded-2xl mb-3">
+            <Image 
+              source={require('../assets/images/cat01.png')}
+              style={{ width: '100%', height: 100 }}
+            />
+            <Text className="text-gray-700 font-semibold text-xl ml-4">
+              Cachorros 
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  className="p-4 bg-yellow-400 rounded-2xl mb-3">
+            <Image 
+              source={require('../assets/images/cat02.png')}
+              style={{ width: '100%', height: 100 }}
+            />
+            <Text className="text-gray-700 font-semibold text-xl ml-4">
+              Gatos 
+            </Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </View>
