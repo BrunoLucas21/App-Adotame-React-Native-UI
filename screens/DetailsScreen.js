@@ -1,11 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
-import { themeColors } from "../theme";
-import { Image, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { Image, TouchableOpacity, View } from 'react-native';
+import { ArrowLeftIcon } from 'react-native-heroicons/solid';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function AdoptPetScreen() {
-  const navigation = useNavigation();
+export default function DetailsScreen() {
   return (
     <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
       <SafeAreaView  className="flex ">
@@ -21,7 +18,11 @@ export default function AdoptPetScreen() {
           </View>
         </SafeAreaView>
 
-        
+        <View 
+        style={{borderTopLeftRadius: 50, borderTopRightRadius: 50}} 
+        className="flex-1 bg-white px-6 pt-8">
+          
+        </View>
     </View>
   )
 }

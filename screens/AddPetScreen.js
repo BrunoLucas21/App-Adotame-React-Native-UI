@@ -1,11 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
-import { themeColors } from "../theme";
 import { Image, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function AdoptPetScreen() {
+export default function AddPetScreen() {
   const navigation = useNavigation();
+
   return (
     <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
       <SafeAreaView  className="flex ">
@@ -15,7 +15,7 @@ export default function AdoptPetScreen() {
               <ArrowLeftIcon size="20" color="black" />
             </TouchableOpacity>
           </View>
-          <View  className="flex-row justify-center">
+          <View className="flex-row justify-center">
             <Image source={require('../assets/images/login.png')} 
             style={{width: 200, height: 200}} />
           </View>
