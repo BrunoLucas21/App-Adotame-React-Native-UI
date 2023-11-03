@@ -1,17 +1,18 @@
-import { View, Text, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native'
-import React, { useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { ArrowLeftIcon, ArrowRightIcon, InboxIcon, ListBulletIcon, QueueListIcon, UserIcon } from 'react-native-heroicons/solid'
-import { themeColors } from '../theme'
-import { useNavigation } from '@react-navigation/native'
-import { Searchbar } from 'react-native-paper'
-import { AnimalsData } from '../components/AnimalsData'
+import { View, Text, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ArrowRightIcon, ListBulletIcon, UserIcon } from 'react-native-heroicons/solid';
+import { themeColors } from '../theme';
+import { useNavigation } from '@react-navigation/native';
+import { Searchbar } from 'react-native-paper';
+import { data } from '../components/contents/dadosAnimais';
+import { categorias } from '../components/contents/categorias';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
   const [search, setSearch] = useState();
+  const [ativo, setAtivo] = useState(1);
   const onChangeSearch = query => setSearch(query);
-  const data = AnimalsData;
 
   return (
     <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
@@ -46,28 +47,26 @@ export default function HomeScreen() {
             />
 
             {/* Categórias */}
-            <View>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} className="py-2">
-                <TouchableOpacity className="bg-yellow-400 p-4 m-2 rounded-2xl">
-                  <Text className="text-center justify-center p-1 font-bold">Cachorros</Text>
-                </TouchableOpacity>
-                
-                <TouchableOpacity className="bg-yellow-400 p-4 m-2 rounded-2xl">
-                  <Text className="text-center justify-center p-1 font-bold">Gatos</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity className="bg-yellow-400 p-4 m-2 rounded-2xl">
-                  <Text className="text-center justify-center p-1 font-bold">Coelhos</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity className="bg-yellow-400 p-4 m-2 rounded-2xl">
-                  <Text className="text-center justify-center p-1 font-bold">Cavalos</Text>
-                </TouchableOpacity>
-
-                  <TouchableOpacity className="bg-yellow-400 p-4 m-2 rounded-2xl">
-                    <Text className="text-center justify-center p-1 font-bold">Pássaros</Text>
-                  </TouchableOpacity>
-              </ScrollView>
+            <View className="px-5 mt-6">
+              <FlatList 
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={categorias}
+                keyExtractor={item => item.id}
+                className="overflow-visible"
+                renderItem={({item}) => {
+                  ativo = item.id == ativo;
+                  let textoAtivadoClass = ativo? 'text-white' : 'text-gray-700'
+                  return (
+                    <TouchableOpacity onPress={() => setAtivo(item.id)}
+                      style={{backgroundColor: ativo? themeColors.bgLight: '#000000'}}
+                      className="p-4 px-5 mr-2 rounded-full shadow"
+                    >
+                      <Text className={"font-semibold " + textoAtivadoClass}>{item.title}</Text>
+                    </TouchableOpacity>
+                  )
+                }}
+                />
             </View>
 
             {/* Cards */}
@@ -80,12 +79,8 @@ export default function HomeScreen() {
                       style={{width: '100%', height: 140, bottom: 6}}
                     />
                     <Text className="flex text-center justify-between bottom-12 text-white font-bold">
-                      {data.animals.map((item) => (
-                        <AnimalsData 
-                          key={item.id}
-                          name={item.nome}
-                          age={item.idade}
-                        />
+                      {data.map((item) => (
+                        item.nome
                       ))}
                     </Text>
                     <TouchableOpacity onPress={() => navigation.navigate('Details')} style={{backgroundColor: themeColors.bg}} 
@@ -142,7 +137,7 @@ export default function HomeScreen() {
                       style={{width: '100%', height: 140, bottom: 6}}
                     />
                     <Text className="flex text-center justify-center">
-                      {AnimalsData.animals.map((item) => item.nome.toLowerCase())}
+                      {data.map((item) => item.nome.toLowerCase())}
                     </Text>
                     <TouchableOpacity style={{backgroundColor: themeColors.bg}} 
                     className="flex items-center justify-center rounded-2xl h-12 w-12 ml-64 bottom-20">

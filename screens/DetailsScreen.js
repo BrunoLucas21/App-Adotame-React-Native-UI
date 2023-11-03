@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DetailsScreen() {
   return (
-    <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
+    <View className="flex-1" style={{backgroundColor: themeColors.bg}}>
       <SafeAreaView  className="flex ">
           <View className="flex-row justify-start">
             <TouchableOpacity onPress={()=> navigation.goBack()} 
@@ -14,14 +14,16 @@ export default function DetailsScreen() {
           </View>
           <View  className="flex-row justify-center">
             <Image source={require('../assets/images/login.png')} 
-            style={{width: 200, height: 200}} />
+            style={{width: 350, height: 350}} />
           </View>
         </SafeAreaView>
 
         <View 
         style={{borderTopLeftRadius: 50, borderTopRightRadius: 50}} 
         className="flex-1 bg-white px-6 pt-8">
-          
+          <View>
+
+          </View>
         </View>
     </View>
   )
