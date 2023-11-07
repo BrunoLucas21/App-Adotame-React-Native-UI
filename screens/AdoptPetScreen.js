@@ -16,7 +16,11 @@ export default function AdoptPetScreen() {
           </View>
         </SafeAreaView>
 
-        
+        <View 
+          style={{borderTopLeftRadius: 50, borderTopRightRadius: 50}} 
+          className="flex-1 bg-white px-6 pt-8">
+            
+        </View>
     </View>
   )
 }

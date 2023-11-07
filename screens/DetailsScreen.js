@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import VoltarTela from '../components/contents/voltarTela';
 import { themeColors } from '../theme';
 import { data } from '../components/contents/dadosAnimais';
+import { animais } from './HomeScreen';
 
 export default function DetailsScreen() {
   return (
@@ -11,15 +12,7 @@ export default function DetailsScreen() {
       <SafeAreaView  className="flex ">
           <VoltarTela />
           <View  className="flex-row justify-center">
-            {data.map((item) => {
-              if (item.id === 1) {
-                return (
-                  <Image source={require('../assets/images/pet01.png')} 
-                    style={{width: 350, height: 350}} 
-                  />
-                )
-              }
-            })}
+            {animais.map((item) => item.img)}
           </View>
         </SafeAreaView>
 
@@ -27,7 +20,7 @@ export default function DetailsScreen() {
         style={{borderTopLeftRadius: 50, borderTopRightRadius: 50}} 
         className="flex-1 bg-white px-6 pt-8">
           <View className="space-x-2 space-y-2">
-            {data.map((item) => item.nome)}
+            
           </View>
         </View>
     </View>
