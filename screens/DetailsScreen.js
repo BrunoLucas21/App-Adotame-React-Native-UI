@@ -1,28 +1,33 @@
-import { Image, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { ArrowLeftIcon } from 'react-native-heroicons/solid';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import VoltarTela from '../components/contents/voltarTela';
+import { themeColors } from '../theme';
+import { data } from '../components/contents/dadosAnimais';
 
 export default function DetailsScreen() {
   return (
     <View className="flex-1" style={{backgroundColor: themeColors.bg}}>
       <SafeAreaView  className="flex ">
-          <View className="flex-row justify-start">
-            <TouchableOpacity onPress={()=> navigation.goBack()} 
-            className="bg-yellow-400 p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
-              <ArrowLeftIcon size="20" color="black" />
-            </TouchableOpacity>
-          </View>
+          <VoltarTela />
           <View  className="flex-row justify-center">
-            <Image source={require('../assets/images/login.png')} 
-            style={{width: 350, height: 350}} />
+            {data.map((item) => {
+              if (item.id === 1) {
+                return (
+                  <Image source={require('../assets/images/pet01.png')} 
+                    style={{width: 350, height: 350}} 
+                  />
+                )
+              }
+            })}
           </View>
         </SafeAreaView>
 
         <View 
         style={{borderTopLeftRadius: 50, borderTopRightRadius: 50}} 
         className="flex-1 bg-white px-6 pt-8">
-          <View>
-
+          <View className="space-x-2 space-y-2">
+            {data.map((item) => item.nome)}
           </View>
         </View>
     </View>

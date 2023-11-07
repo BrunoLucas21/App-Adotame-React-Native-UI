@@ -36,7 +36,15 @@ export const data = [
     nome: "Cody",
     imageUrl: "../assets/images/pet05.png",
     idade: "6 anos",
-    especie: "Boxer",
+    especie: "Vira lata",
+    desc: "Vacinado",
+  },
+  {
+    id: 6,
+    nome: "Algodão",
+    imageUrl: "../assets/images/pet06.png",
+    idade: "2 anos",
+    especie: "Siames",
     desc: "Vacinado",
   }
 ]
