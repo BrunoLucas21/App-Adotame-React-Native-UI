@@ -15,19 +15,23 @@ const categorias = [
 ];
 
 export const animais = [
-  { id: '1', name: 'Fred', idade: '2 anos', especie: 'Golden Retrivier', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/pet01.png') },
-  { id: '2', name: 'Lucky', idade: '4 anos', especie: 'Maltês', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/pet02.png') },
-  { id: '3', name: 'Madona', idade: '5 anos', especie: 'Border Collie', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/pet03.png') },
-  { id: '4', name: 'Negona', idade: '5 anos', especie: 'Cão-lobo', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/pet04.png') },
-  { id: '5', name: 'Bob', idade: '6 anos', especie: 'Vira-lata', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/pet05.png') },
-  { id: '6', name: 'Ninna', idade: '2 anos', especie: 'Siamês', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/pet06.png') },
+  { id: '1', name: 'Fred', idade: '2 anos', especie: 'Vira-lata', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/dog1.png') },
+  { id: '2', name: 'Lucky', idade: '4 anos', especie: 'Vira-lata', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/dog2.png') },
+  { id: '3', name: 'Madona', idade: '5 anos', especie: 'Vira-lata', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/dog3.png') },
+  { id: '4', name: 'Negona', idade: '5 anos', especie: 'Vira-lata', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/dog4.png') },
+  { id: '5', name: 'Bob', idade: '6 anos', especie: 'Vira-lata', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/dog5.png') },
+  { id: '6', name: 'Ninna', idade: '2 anos', especie: 'Siamês', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/cat1.png') },
+  { id: '7', name: 'Agatha', idade: '3 anos', especie: 'Angorá', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/cat2.png') },
+  { id: '8', name: 'Aldo', idade: '6 anos', especie: 'Sphynx', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/cat3.png') },
+  { id: '9', name: 'Algodão', idade: '2 anos', especie: 'Ragdoll', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/cat4.png') },
+  { id: '10', name: 'Alice', idade: '1 anos', especie: 'Ashera', desc: 'Todas as vacinas tomadas, pronto para um novo lar', img: require('../assets/images/cat5.png') },
 ]
 
 export default function HomeScreen() {
   const navigation = useNavigation();
 
   const handleNavigationDetails = () => {
-    navigation.navigate('Details')
+    // TODO: quando o usuário clicar em uma das categorias, ele verá os detalhes do animal que foi selecionado
   };
 
   return (

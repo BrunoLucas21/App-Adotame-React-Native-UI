@@ -10,7 +10,7 @@ export default function BarraPesquisa() {
     <View className="p-2">
       {/* Barra de pesquisa */}
       <Searchbar
-        placeholder='Pesquisar um animal...'
+        placeholder='Busque ONGs, Cachorros, Gatos...'
         iconColor="#374151"
         value={search}
         onChangeText={onChangeSearch}
