@@ -32,6 +32,7 @@ export default function HomeScreen() {
 
   const handleNavigationDetails = () => {
     // TODO: quando o usuário clicar em uma das categorias, ele verá os detalhes do animal que foi selecionado
+    navigation.navigate('Details');
   };
 
   return (
@@ -141,12 +142,13 @@ export default function HomeScreen() {
           {/* Cards */}
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View className="flex flex-row justify-center gap-4">
-              <View style={{ backgroundColor: themeColors.bg, height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
-                <Image style={{ width: 250, height: 250, marginTop: 50 }}
-                  source={require('../assets/images/pet01.png')}
+              <View style={{ height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <Image style={{ width: '100%', height: '100%', marginTop: 73, borderRadius: 8 }}
+                  source={require('../assets/images/dog1.png')}
                 />
                 <TouchableOpacity style={{ bottom: 50, padding: 10, borderRadius: 8 }} onPress={handleNavigationDetails}>
-                  <Text className="text-center text-white font-bold text-xl">
+                  <ArrowRightIcon size="24" color="white" style={{bottom: 10, marginLeft: 100}} />
+                  <Text className="text-center text-white font-bold text-xl bottom-9">
                     {animais.map((item) => {
                       if (item.id === '1') {
                         return (
@@ -160,12 +162,13 @@ export default function HomeScreen() {
                 </TouchableOpacity>
               </View>
 
-              <View style={{ backgroundColor: themeColors.bg, height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
-                <Image style={{ width: 250, height: 250 }}
-                  source={require('../assets/images/pet02.png')}
+              <View style={{ height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <Image style={{ width: '100%', height: '100%', marginTop: 73, borderRadius: 8 }}
+                  source={require('../assets/images/dog2.png')}
                 />
                 <TouchableOpacity style={{ bottom: 50, padding: 10, borderRadius: 8 }} onPress={handleNavigationDetails}>
-                  <Text className="text-center text-white font-bold text-xl">
+                  <ArrowRightIcon size="24" color="white" style={{bottom: 10, marginLeft: 100}} />
+                  <Text className="text-center text-white font-bold text-xl bottom-9">
                     {animais.map((item) => {
                       if (item.id === '2') {
                         return (
@@ -179,14 +182,55 @@ export default function HomeScreen() {
                 </TouchableOpacity>
               </View>
 
-              <View style={{ backgroundColor: themeColors.bg, height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
-                <Image style={{ width: 250, height: 250 }}
-                  source={require('../assets/images/pet03.png')}
+              <View style={{ height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <Image style={{ width: '100%', height: '100%', marginTop: 73, borderRadius: 8 }}
+                  source={require('../assets/images/dog3.png')}
                 />
                 <TouchableOpacity style={{ bottom: 50, padding: 10, borderRadius: 8 }} onPress={handleNavigationDetails}>
-                  <Text className="text-center text-white font-bold text-xl">
+                  <ArrowRightIcon size="24" color="white" style={{bottom: 10, marginLeft: 100}} />
+                  <Text className="text-center text-white font-bold text-xl bottom-9">
                     {animais.map((item) => {
                       if (item.id === '3') {
+                        return (
+                          <>
+                            <Text>{item.name}</Text>
+                          </>
+                        )
+                      }
+                    })}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={{ height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <Image style={{ width: '100%', height: '100%', marginTop: 73, borderRadius: 8 }}
+                  source={require('../assets/images/dog4.png')}
+                />
+                <TouchableOpacity style={{ bottom: 50, padding: 10, borderRadius: 8 }} onPress={handleNavigationDetails}>
+                  <ArrowRightIcon size="24" color="white" style={{bottom: 10, marginLeft: 100}} />
+                  <Text className="text-center text-white font-bold text-xl bottom-9">
+                    {animais.map((item) => {
+                      if (item.id === '4') {
+                        return (
+                          <>
+                            <Text>{item.name}</Text>
+                          </>
+                        )
+                      }
+                    })}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={{ height: 320, width: 240, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <Image style={{ width: '100%', height: '100%', marginTop: 73, borderRadius: 8 }}
+                  source={require('../assets/images/dog5.png')}
+                />
+                <TouchableOpacity style={{ bottom: 50, padding: 10, borderRadius: 8 }} onPress={handleNavigationDetails}>
+                  <ArrowRightIcon size="24" color="white" style={{bottom: 10, marginLeft: 100}} />
+                  <Text className="text-center text-white font-bold text-xl bottom-9">
+                    {animais.map((item) => {
+                      if (item.id === '5') {
                         return (
                           <>
                             <Text>{item.name}</Text>
