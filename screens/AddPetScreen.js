@@ -25,7 +25,7 @@ export default function AddPetScreen() {
         <View
         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
         className="flex-1 bg-white px-6 pt-8">
-          <View className="">
+          <View className="form space-y-2">
             <TextInput
               placeholder="Digite o nome do animal"
               value={nome}
