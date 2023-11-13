@@ -1,43 +1,27 @@
 import { Image, ImageBackground, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import VoltarTela from '../components/contents/voltarTela';
 import { themeColors } from '../theme';
-import { animais } from './HomeScreen';
+import { SafeAreaView } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import VoltarTela from '../components/contents/voltarTela';
+import { HeartIcon } from 'react-native-heroicons/solid';
 
-export default function DetailsScreen() {
+export default function DetailsScreen(props) {
+  const item = props.route.params;
   return (
     <View className="flex-1" style={{backgroundColor: themeColors.bg}}>
-      <SafeAreaView  className="flex ">
+      <Image source={require('../assets/images/background.png')} 
+        style={{height: 300, borderBottomLeftRadius: 50, borderBottomRightRadius: 50}}
+        className="w-full absolute"
+      />
+      <SafeAreaView className="space-y-4">
         <VoltarTela />
-          <View  className="flex-row justify-center">
-            {
-              animais.map((item) => {
-                if (item.id === '1') {
-                  return (
-                    <View style={{ height: 350, width: '100%', alignItems: 'center', justifyContent: 'center', marginTop: 10, marginBottom: 10 }}>
-                      <Image source={item.img} style={{width: '100%', height: '100%', borderRadius: 8}} resizeMode='cover' />
-                    </View>
-                  )
-                } else {
-                  return null;
-                }
-              })
-            }
-          </View>
-        </SafeAreaView>
-        <View
-        style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
-        className="flex-1 bg-white px-6 pt-8">
-          <Text className="font-bold" style={{fontSize: 20}}>
-            {animais.map((item) => {
-              if (item.id === '1') {
-                return item.name;
-              } else {
-                return null;
-              }
-            })}
-          </Text>
+        <TouchableOpacity className="bg-yellow-400 p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
+          <HeartIcon size="20" color="white" />
+        </TouchableOpacity>
+        <View className="flex-row justify-center">
+          <Image source={item.img} className="h-60 w-60" />
         </View>
+      </SafeAreaView>
     </View>
   )
 }

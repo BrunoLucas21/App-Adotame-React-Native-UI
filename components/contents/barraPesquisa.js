@@ -7,7 +7,7 @@ export default function BarraPesquisa() {
   const onChangeSearch = query => setSearch(query);
 
   return (
-    <View className="p-2">
+    <View className="p-2 my-7">
       {/* Barra de pesquisa */}
       <Searchbar
         placeholder='Busque ONGs, Cachorros, Gatos...'

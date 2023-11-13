@@ -1,6 +1,6 @@
 export const themeColors = {
-   bg: '#282142',
-   bgLight: '#d4a574',
-   bgDark: '#8c5319',
+   bg: '#312b54',
+   bgLight: '#ffbe40',
+   bgDark: '#312b54',
    text: '#3C2A21'
 }   
