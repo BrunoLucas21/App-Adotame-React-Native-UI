@@ -14,7 +14,7 @@ export default function AnimalCards({ item }) {
       style={{
         borderRadius: 40, 
         backgroundColor: themeColors.bgDark, 
-        height: 350, 
+        height: 340, 
         width: 250
       }}
     >
@@ -29,7 +29,7 @@ export default function AnimalCards({ item }) {
       >
         <Image 
           source={item.img} 
-          className="h-40 w-40"
+          className="h-36 w-36"
         />
       </View>
       <View className="px-5 mt-5 space-y-3">

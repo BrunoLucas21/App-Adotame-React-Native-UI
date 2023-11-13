@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { themeColors } from "../theme";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import VoltarTela from "../components/contents/voltarTela";
 import { useState } from "react";
@@ -12,6 +12,7 @@ export default function AdoptPetScreen() {
   const [email, setEmail] = useState([]);
   const [telefone, setTelefone] = useState([]);
   const [endereco, setEndereco] = useState([]);
+  const [bairro, setBairro] = useState([]);
 
   return (
     <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
@@ -26,59 +27,60 @@ export default function AdoptPetScreen() {
         <View 
           style={{borderTopLeftRadius: 50, borderTopRightRadius: 50}} 
           className="flex-1 bg-white px-6 pt-8">
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View className="form space-y-2">
-              <Text className="text-xl text-gray-600 font-semibold">Nome Completo</Text>
+              <Text className="text-gray-700 ml-4 text-xl">Informe os dados do animal corretamente</Text>
+              <Text className="text-gray-700 ml-4">Home do responsável</Text>
               <TextInput 
-                placeholder="Digite seu nome completo"
-                value={nome}
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
+                placeholder="Digite seu nome..."
+                value={nome} 
                 onChangeText={(value) => setNome(value)}
-                autoCapitalize='none'
-                keyboardType='default'
-                maxLength={100}
               />
-              <Text className="text-xl text-gray-600 font-semibold">Nome do Animal</Text>
+              <Text className="text-gray-700 ml-4">Nome do Pet</Text>
               <TextInput 
-                placeholder="Digite seu nome do animal"
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                placeholder="Digite o nome do pet..."
                 value={nomePet}
                 onChangeText={(value) => setNomePet(value)}
-                autoCapitalize='none'
-                keyboardType='default'
-                maxLength={40}
               />
-              <Text className="text-xl text-gray-600 font-semibold">Endereço de E-mail</Text>
+              <Text className="text-gray-700 ml-4">E-mail</Text>
               <TextInput 
-                placeholder="Digite seu endereço de e-mail"
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                placeholder="Digite seu e-mail..."
                 value={email}
                 onChangeText={(value) => setEmail(value)}
-                autoCapitalize='none'
-                keyboardType='email-address'
-                maxLength={100}
               />
-              <Text className="text-xl text-gray-600 font-semibold">Telefone para Contato</Text>
+              <Text className="text-gray-700 ml-4">Número para Contato</Text>
               <TextInput 
-                placeholder="Digite seu telefone para contato"
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                placeholder="Digite seu telefone..."
+                keyboardType='numeric'
                 value={telefone}
                 onChangeText={(value) => setTelefone(value)}
-                autoCapitalize='none'
-                keyboardType='numeric'
-                maxLength={11}
               />
-              <Text className="text-xl text-gray-600 font-semibold">Endereço Residencial</Text>
+              <Text className="text-gray-700 ml-4">Endereço</Text>
               <TextInput 
-                placeholder="Digite seu endereço residencial"
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                placeholder="Digite seu endereço..."
                 value={endereco}
                 onChangeText={(value) => setEndereco(value)}
-                autoCapitalize='none'
-                keyboardType='default'
-                maxLength={150}
+              />
+              <Text className="text-gray-700 ml-4">Bairro</Text>
+              <TextInput 
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                placeholder="Digite seu bairro..."
+                value={bairro}
+                onChangeText={(value) => setBairro(value)}
               />
               <TouchableOpacity 
-                className="py-3 bg-yellow-400 mx-7 rounded-xl"
-                style={{borderWidth:1, borderColor:'#FFF', width: '90%', alignSelf:"center"}}
+                className="py-3 bg-yellow-400 mx-7 my-2 rounded-xl"
+                style={{borderWidth:1, borderColor:'#FFF', width: '100%', alignSelf:"center"}}
               >
                 <Text className="text-xl font-bold text-center text-gray-700">Adotar</Text>
               </TouchableOpacity>
             </View>
+          </ScrollView>  
         </View>
     </View>
   )

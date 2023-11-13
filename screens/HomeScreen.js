@@ -1,7 +1,7 @@
-import { View, TouchableOpacity, Image, Text, ScrollView } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowRightIcon, ListBulletIcon, UserIcon } from 'react-native-heroicons/solid';
+import { HeartIcon,  HomeIcon,  ListBulletIcon,  PhoneIcon,  PlusIcon,  UserIcon } from 'react-native-heroicons/solid';
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import BarraPesquisa from '../components/contents/barraPesquisa';
@@ -13,36 +13,32 @@ import AnimalCards from '../components/AnimalCards';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
-  const [categoria, setCategoria] = useState();
   const [categoriaAtivado, setCategoriaAtivado] = useState(1);
 
-  const handleNavigationDetails = () => {
-    // TODO: quando o usuário clicar em uma das categorias, ele verá os detalhes do animal que foi selecionado
-    navigation.navigate('Details');
-  };
-
   return (
-    <View className="flex-1 bg-white" style={{ backgroundColor: themeColors.bg }}>
+    <View className="flex-1 relative" style={{ backgroundColor: themeColors.bg }}>
       <SafeAreaView className="flex ">
         <View className="flex-row justify-start">
-          <TouchableOpacity className="bg-yellow-400 p-2 rounded-2xl ml-2 ">
-            <ListBulletIcon size="24" color="black" />
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}
-            className="bg-yellow-400 p-2 rounded-2xl ml-72">
+            className="bg-yellow-400 p-2 rounded-2xl ml-2">
             <UserIcon size="24" color="black" />
           </TouchableOpacity>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('Favourite')}
+            className="bg-yellow-400 p-2 rounded-2xl ml-72 ">
+            <HeartIcon size="24" color="black" />
+          </TouchableOpacity>
         </View>
+        {/* Barra de pesquisa */}
         <BarraPesquisa />
       </SafeAreaView>
 
       <View
         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
-        className="flex-1 bg-white px-6 pt-8">
+        className="flex-1 bg-white px-6 pt-6">
           <Text className="text-xl text-gray-700 font-semibold">Selecione uma categória</Text>
-          
           {/* Categorias */}
-          <View className="mt-4">
+          <View className="mt-8">
             <FlatList 
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -56,9 +52,9 @@ export default function HomeScreen() {
                   <TouchableOpacity
                     onPress={() => setCategoriaAtivado(item.id)}
                     style={{ backgroundColor: ativado? themeColors.bgLight: 'rgba(0,0,0,0.07)' }}
-                    className="p-4 px-5 rounded-full mr-2 shadow"
+                    className="p-4 px-5 rounded-full mr-2 shadow "
                   >
-                    <Text className={"font-semibold" + ativadoTextoClass}>
+                    <Text className={"font-semibold " + ativadoTextoClass}>
                       {item.name}
                     </Text>
                   </TouchableOpacity>
@@ -68,7 +64,7 @@ export default function HomeScreen() {
           </View>
 
           {/* Animals Cards */}
-          <View className="mt-12 py-2">
+          <View className="mt-8 py-2">
             <Carousel 
               containerCustomStyle={{ overflow: 'visible' }}
               data={animais}
@@ -81,6 +77,26 @@ export default function HomeScreen() {
               itemWidth={260}
               slideStyle={{display: 'flex', alignItems: 'center'}}
             />
+          </View>
+          
+          {/* Tab Navigator */}
+          <View className="bg-yellow-400 w-90 h-16 rounded-2xl mt-2 flex flex-row justify-between">
+            <TouchableOpacity 
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <HomeIcon size="25" color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={() => navigation.navigate('Contact')}
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <PhoneIcon size="25" color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <HeartIcon size="25" color="black" />
+            </TouchableOpacity>
           </View>
         </View>
     </View>
