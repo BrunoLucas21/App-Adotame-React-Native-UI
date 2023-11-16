@@ -2,7 +2,6 @@ import { Image, ImageBackground, Text, View } from 'react-native';
 import { themeColors } from '../theme';
 import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native';
-import VoltarTela from '../components/contents/voltarTela';
 import { ArrowLeftIcon, HeartIcon, HomeIcon, PlusIcon } from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 
@@ -56,7 +55,7 @@ export default function DetailsScreen(props) {
         <TouchableOpacity 
           onPress={() => navigation.navigate('AdoptPet')}
           className="py-3 bg-yellow-400 rounded-xl mx-4">
-          <Text className="text-xl font-bold text-center text-gray-700">Adotar</Text>
+          <Text className="text-xl font-bold text-center text-gray-700">Adotar {item.name}</Text>
         </TouchableOpacity>
       </View>
 
