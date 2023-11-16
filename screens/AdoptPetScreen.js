@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import VoltarTela from "../components/contents/voltarTela";
 import { useState } from "react";
 
-export default function AdoptPetScreen() {
+export default function AdoptPetScreen({ item }) {
   const navigation = useNavigation();
   const [nome, setNome] = useState([]);
   const [nomePet, setNomePet] = useState([]);
@@ -30,19 +30,19 @@ export default function AdoptPetScreen() {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View className="form space-y-2">
               <Text className="text-gray-700 ml-4 text-xl">Informe os dados do animal corretamente</Text>
-              <Text className="text-gray-700 ml-4">Home do responsável</Text>
+              <Text className="text-gray-700 ml-4">Home do adotante</Text>
               <TextInput 
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
                 placeholder="Digite seu nome..."
                 value={nome} 
                 onChangeText={(value) => setNome(value)}
               />
-              <Text className="text-gray-700 ml-4">Nome do Pet</Text>
+              <Text className="text-gray-700 ml-4">Nome do animal</Text>
               <TextInput 
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
                 placeholder="Digite o nome do pet..."
-                value={nomePet}
-                onChangeText={(value) => setNomePet(value)}
+                value={nome}
+                onChangeText={setNomePet(item.name)}
               />
               <Text className="text-gray-700 ml-4">E-mail</Text>
               <TextInput 

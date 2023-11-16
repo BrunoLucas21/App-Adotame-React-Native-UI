@@ -11,6 +11,7 @@ import AddPetScreen from "../screens/AddPetScreen";
 import FavouriteScreen from "../screens/FavouriteScreen";
 import ContactScreen from "../screens/ContactScreen";
 import useAuth from "../hooks/useAuth";
+import PersonScreen from "../screens/PersonScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function StackRoutes() {
           <Stack.Screen name="AddPet" options={{headerShown: false}} component={AddPetScreen} />
           <Stack.Screen name="Favourite" options={{headerShown: false}} component={FavouriteScreen} />
           <Stack.Screen name="Contact" options={{headerShown: false}} component={ContactScreen} />
+          <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     )

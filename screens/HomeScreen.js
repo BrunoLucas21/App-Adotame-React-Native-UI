@@ -1,7 +1,14 @@
 import { View, TouchableOpacity, Text } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowLeftOnRectangleIcon, ArrowUpIcon, HeartIcon,  HomeIcon,  ListBulletIcon,  PhoneIcon,  PlusIcon,  UserIcon } from 'react-native-heroicons/solid';
+import { 
+  ArrowRightOnRectangleIcon, 
+  Bars3CenterLeftIcon, 
+  HeartIcon, 
+  HomeIcon, 
+  PhoneIcon, 
+  UserCircleIcon 
+} from 'react-native-heroicons/solid';
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import BarraPesquisa from '../components/contents/barraPesquisa';
@@ -26,12 +33,13 @@ export default function HomeScreen() {
       <SafeAreaView className="flex ">
         <View className="flex-row justify-around">
           <TouchableOpacity 
-            className="bg-yellow-400 p-2 rounded-2xl mr-2">
-            <ListBulletIcon size="24" color="black" />
+            className="bg-yellow-400 p-2 rounded-2xl">
+            <Bars3CenterLeftIcon size="32" color="black" />
           </TouchableOpacity>
           <TouchableOpacity 
+            onPress={() => navigation.navigate('Person')}
             className="bg-yellow-400 p-2 rounded-2xl ml-64">
-            <UserIcon size="24" color="black" />
+            <UserCircleIcon size="32" color="black" />
           </TouchableOpacity>
         </View>
         {/* Barra de pesquisa */}
@@ -43,7 +51,7 @@ export default function HomeScreen() {
         className="flex-1 bg-white px-6 pt-6">
           <Text className="text-xl text-gray-700 font-semibold">Selecione uma categória</Text>
           {/* Categorias */}
-          <View className="mt-8">
+          <View className="mt-4">
             <FlatList 
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -85,28 +93,29 @@ export default function HomeScreen() {
           </View>
           
           {/* Tab Navigator */}
-          <View className="bg-yellow-400 w-90 h-16 rounded-2xl mt-2 flex flex-row justify-between">
+          <View className="bg-yellow-400 w-90 h-16 rounded-2xl mt-8 flex flex-row justify-between">
             <TouchableOpacity 
               className="bg-white p-3 rounded-2xl m-2 justify-center"
             >
-              <HomeIcon size="25" color="black" />
+              <HomeIcon size="32" color="black" />
             </TouchableOpacity>
             <TouchableOpacity 
               onPress={() => navigation.navigate('Contact')}
               className="bg-white p-3 rounded-2xl m-2 justify-center"
             >
-              <PhoneIcon size="25" color="black" />
+              <PhoneIcon size="32" color="black" />
             </TouchableOpacity>
             <TouchableOpacity 
+              onPress={() => navigation.navigate('Favourite')}
               className="bg-white p-3 rounded-2xl m-2 justify-center"
             >
-              <HeartIcon size="25" color="black" />
+              <HeartIcon size="32" color="black" />
             </TouchableOpacity>
             <TouchableOpacity 
               onPress={handleLogout}
               className="bg-white p-3 rounded-2xl m-2 justify-center"
             >
-              <ArrowLeftOnRectangleIcon size="25" color="black" />
+              <ArrowRightOnRectangleIcon size="32" color="black" />
             </TouchableOpacity>
           </View>
         </View>

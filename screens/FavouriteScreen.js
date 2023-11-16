@@ -1,37 +1,44 @@
 import { Image, Text, View } from "react-native";
 import { themeColors } from "../theme";
 import {  } from "react-native";
-import { ArrowLeftIcon, FlagIcon, HeartIcon, HomeIcon, PlusIcon, UserCircleIcon, UserMinusIcon } from "react-native-heroicons/solid";
+import { 
+  ArrowLeftCircleIcon,
+  ArrowLeftIcon,
+  ArrowLeftOnRectangleIcon,
+  HeartIcon, 
+  HomeIcon, 
+  PhoneIcon, 
+  PlusIcon, 
+  UserCircleIcon 
+} from "react-native-heroicons/solid";
 import { SafeAreaView, TouchableOpacity } from "react-native";
 import Carousel from "react-native-snap-carousel";
 import { animais } from "../components/AnimalData";
 import AnimalCards from "../components/AnimalCards";
-import VoltarTela from "../components/contents/voltarTela";
+import { useNavigation } from "@react-navigation/native";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 export default function FavouriteScreen(props) {
+  const navigation = useNavigation();
   const item = props.route.params;
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  }
   return (
     <View className="flex-1 pt-4" style={{ backgroundColor: themeColors.bg }}>
-      <View
-        style={{
-          height: 300,
-          borderBottomLeftRadius: 50,
-          borderBottomRightRadius: 50,
-        }}
-        className="w-full absolute"
-      >
-        <Image
-          source={require('../assets/images/image-background.png')}
-          style={{ width: '100%', height: 300, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, }}
-        />
-      </View>
       <SafeAreaView className="flex mt-4">
-        <View className="flex-row justify-around ">
-          <VoltarTela />
+        <View className="flex-row justify-around">
           <TouchableOpacity 
-            className="bg-yellow-400 p-2 rounded-2xl ml-56"
-          >
-            <UserCircleIcon size="25" color="black" />
+            onPress={() => navigation.goBack()}
+            className="bg-yellow-400 p-2 rounded-2xl">
+            <ArrowLeftIcon size="32" color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('Person')}
+            className="bg-yellow-400 p-2 rounded-2xl ml-64">
+            <UserCircleIcon size="32" color="black" />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -56,25 +63,32 @@ export default function FavouriteScreen(props) {
             />
         </View>
 
-        <View className="bg-yellow-400 w-90 h-16 rounded-2xl mt-4 mx-2 flex flex-row justify-between">
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Home')}
-            className="bg-white p-3 rounded-2xl m-2 justify-center"
-          >
-            <HomeIcon size="25" color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="bg-white p-3 rounded-2xl m-2 justify-center"
-          >
-            <PlusIcon size="25" color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Favourite')}
-            className="bg-white p-3 rounded-2xl m-2 justify-center"
-          >
-            <HeartIcon size="25" color="black" />
-          </TouchableOpacity>
-        </View>
+        <View className="bg-yellow-400 w-90 h-16 rounded-2xl mt-44 flex flex-row justify-between">
+            <TouchableOpacity 
+              onPress={() => navigation.navigate('Home')}
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <HomeIcon size="32" color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={() => navigation.navigate('Contact')}
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <PhoneIcon size="32" color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={() => navigation.navigate('Favourite')}
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <HeartIcon size="32" color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={handleLogout}
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <ArrowLeftOnRectangleIcon size="32" color="black" />
+            </TouchableOpacity>
+          </View>
       </View>
     </View>
   )
