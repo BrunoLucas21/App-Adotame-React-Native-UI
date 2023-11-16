@@ -1,7 +1,7 @@
 import { View, TouchableOpacity, Text } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { HeartIcon,  HomeIcon,  ListBulletIcon,  PhoneIcon,  PlusIcon,  UserIcon } from 'react-native-heroicons/solid';
+import { ArrowLeftOnRectangleIcon, ArrowUpIcon, HeartIcon,  HomeIcon,  ListBulletIcon,  PhoneIcon,  PlusIcon,  UserIcon } from 'react-native-heroicons/solid';
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import BarraPesquisa from '../components/contents/barraPesquisa';
@@ -10,23 +10,28 @@ import { categorias } from '../components/AnimalCategoria';
 import { FlatList } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import AnimalCards from '../components/AnimalCards';
+import { signOut } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
   const [categoriaAtivado, setCategoriaAtivado] = useState(1);
 
+  const handleLogout = async () => {
+    await signOut(auth);
+  }
+
   return (
     <View className="flex-1 relative" style={{ backgroundColor: themeColors.bg }}>
       <SafeAreaView className="flex ">
-        <View className="flex-row justify-start">
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}
-            className="bg-yellow-400 p-2 rounded-2xl ml-2">
-            <UserIcon size="24" color="black" />
+        <View className="flex-row justify-around">
+          <TouchableOpacity 
+            className="bg-yellow-400 p-2 rounded-2xl mr-2">
+            <ListBulletIcon size="24" color="black" />
           </TouchableOpacity>
           <TouchableOpacity 
-            onPress={() => navigation.navigate('Favourite')}
-            className="bg-yellow-400 p-2 rounded-2xl ml-72 ">
-            <HeartIcon size="24" color="black" />
+            className="bg-yellow-400 p-2 rounded-2xl ml-64">
+            <UserIcon size="24" color="black" />
           </TouchableOpacity>
         </View>
         {/* Barra de pesquisa */}
@@ -96,6 +101,12 @@ export default function HomeScreen() {
               className="bg-white p-3 rounded-2xl m-2 justify-center"
             >
               <HeartIcon size="25" color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={handleLogout}
+              className="bg-white p-3 rounded-2xl m-2 justify-center"
+            >
+              <ArrowLeftOnRectangleIcon size="25" color="black" />
             </TouchableOpacity>
           </View>
         </View>

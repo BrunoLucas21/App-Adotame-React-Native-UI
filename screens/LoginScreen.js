@@ -4,11 +4,24 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid'
 import { themeColors } from '../theme'
 import { useNavigation } from '@react-navigation/native'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebase'
 
 export default function LoginScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+
+  const handleSubmit = async () => {
+    if (email && senha) {
+      try {
+        await signInWithEmailAndPassword(auth, email, senha);
+      } catch(err) {
+        console.error('Error: ', err.message);
+      }
+    }
+  };
+
 
   return (
     <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
@@ -53,7 +66,7 @@ export default function LoginScreen() {
               className="py-3 bg-yellow-400 rounded-xl">
                 <Text 
                     className="text-xl font-bold text-center text-gray-700"
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={handleSubmit}
                 >
                         Entrar
                 </Text>
